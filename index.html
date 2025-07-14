@@ -1,140 +1,218 @@
-Certainly! Below is a simple HTML template for a futuristic website named **only1sslmarketplace**. This code provides an organized layout for sales categories, includes sample products with price tags, and mimics a modern design aesthetic that is reminiscent of Canva's clean and organized look. You can further customize this code to include your specific products, prices, and any additional styling or functionality you wish.
-
-### HTML Code for `only1sslmarketplace`:
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.">
-    <title>Only1SSLMarketplace</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            background-color: #eee;
-            color: #ffffff;
-            font-family: 'Roboto', sans-serif;
-            margin: ;
-            padding: ;
-        }
-        header {
-            background: linear-gradient(90deg, #00aaff, #00ff99);
-            padding: 20px;
-            text-align: center;
-        }
-        h1 {
-            margin: ;
-            font-size: 2.5em;
-        }
-        nav {
-            margin-top: 20px;
-        }
-        nav a {
-            color: #ffffff;
-            margin:  15px;
-            text-decoration: none;
-            font-weight: 700;
-        }
-        section {
-            padding: 20px;
-        }
-        .category {
-            margin: 20px ;
-            padding: 20px;
-            border-radius: 8px;
-            background: rgba(255, 255, 255, .1);
-            box-shadow:   10px rgba(, , , .3);
-        }
-        .category h2 {
-            margin-top: ;
-        }
-        .product {
-            display: inline-block;
-            width: 30%;
-            margin: 1%;
-            text-align: center;
-            background: #1b1b1b;
-            padding: 20px;
-            border-radius: 8px;
-            transition: transform .3s;
-        }
-        .product:hover {
-            transform: scale(1.05);
-        }
-        .price {
-            color: #00ff99;
-            font-weight: bold;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Only1SSLHub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Roboto',sans-serif; }
+    body { background:#ccc; color:#333; min-height:100vh; }
+    header {
+      display:flex; justify-content:space-between; align-items:center;
+      padding:15px 20px; background:#fff; position:relative;
+      border-bottom:1px solid #ddd;
+    }
+    .brand { display:flex; align-items:center; }
+    .brand img { width:40px; margin-right:10px; }
+    .brand-name { font-size:1.8em; font-weight:bold; color:skyblue; }
+    .menu-toggle { font-size:1.8em; background:none; border:none; cursor:pointer; }
+    nav {
+      position:absolute; top:60px; right:20px;
+      display:none; flex-direction:column; background:#f7f7f7;
+      box-shadow:0 2px 8px rgba(0,0,0,.2);
+      border-radius:5px; overflow:hidden;
+    }
+    body.menu-open nav { display:flex; }
+    nav a {
+      padding:12px 20px; text-decoration:none; color:#333; border-bottom:1px solid #eee;
+    }
+    nav a:last-child { border:none; }
+
+    /* Login screen */
+    .login-container {
+      background:#fff; max-width:400px; margin:50px auto; padding:30px;
+      border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.1);
+    }
+    .login-container h2 { text-align:center; font-weight:700; margin-bottom:8px; }
+    .login-container p { text-align:center; color:#666; font-size:.9em; margin-bottom:20px; }
+    .login-container label { display:block; font-weight:500; margin-top:15px; }
+    .login-container input {
+      width:100%; padding:10px; margin-top:5px;
+      border:1px solid #ccc; border-radius:4px;
+    }
+    .forgot-password { text-align:right; margin-top:5px; }
+    .forgot-password a { color:blue; font-size:.9em; text-decoration:none; }
+    .login-container button {
+      width:100%; padding:12px; margin-top:20px;
+      background:green; color:#fff; font-size:1em;
+      border:none; border-radius:4px; cursor:pointer;
+    }
+    .signup-link {
+      text-align:center; margin-top:18px; font-size:.9em;
+    }
+    .signup-link a { color:blue; text-decoration:none; margin-left:4px; }
+
+    /* Dashboard & products common */
+    .page { display:none; padding:20px; }
+    .page.active { display:block; }
+
+    /* Dashboard style */
+    .dashboard { background: linear-gradient(45deg, orange, yellow); min-height:calc(100vh - 60px); }
+    .dashboard .welcome { font-size:1.5em; font-weight:700; margin-bottom:6px; }
+    .dashboard p { margin-bottom:20px; }
+    .dashboard .actions { margin-bottom:20px; }
+    .dashboard .actions button {
+      padding:10px 20px; margin-right:12px;
+      background:green; color:#fff; border:none; border-radius:4px; cursor:pointer;
+    }
+    .dashboard .stats { display:flex; gap:15px; flex-wrap:wrap; margin-bottom:20px; }
+    .dashboard .box {
+      background:#fff; padding:15px; flex:1 1 200px;
+      border-radius:6px; box-shadow:0 2px 6px rgba(0,0,0,0.1);
+    }
+    .dashboard .wallet { background:green; color:#fff; }
+    .dashboard .wallet h3, .dashboard .box h3 { margin-bottom:8px; }
+    .dashboard .recent, .dashboard .quick {
+      min-height:150px; position:relative;
+    }
+    .dashboard .recent h3 {
+      display:flex; justify-content:space-between; align-items:center;
+      margin-bottom:10px;
+    }
+    .dashboard .recent h3 a { color:blue; text-decoration:none; font-size:.9em; }
+    .dashboard .quick button {
+      display:block; width:100%; margin-bottom:10px;
+      padding:10px; background:#eee; border:none; border-radius:4px;
+      cursor:pointer;
+    }
+
+    /* Products page */
+    .products { background: linear-gradient(45deg, orange, yellow); min-height:calc(100vh - 60px); }
+    .products .header-info { margin-bottom:20px; }
+    .products .header-info .balance,
+    .products .header-info .welcome-email { margin-bottom:6px; }
+    .products .explore {
+      background:#ddd; padding:15px; border-radius:6px; margin-bottom:20px;
+    }
+    .products .explore h3 { font-weight:700; margin-bottom:6px; }
+    .products .explore .dropdown,
+    .products .explore .btn-products {
+      padding:10px 15px; color:#fff; background:darkblue; border:none;
+      border-radius:4px; cursor:pointer; margin-right:10px;
+    }
+  </style>
 </head>
 <body>
 
-<header>
-    <h1>Only1SSLMarketplace</h1>
-    <nav>
-        <a href="#ssl-certificates">SSL Certificates</a>
-        <a href="#web-hosting">Web Hosting</a>
-        <a href="#domain-names">Domain Names</a>
+  <header>
+    <div class="brand">
+      <img src="your-logo.png" alt="Logo">
+      <div class="brand-name">Only1sslhub</div>
+    </div>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <nav id="menu">
+      <a href="#" onclick="showPage('login')">Login</a>
+      <a href="#" onclick="showPage('register')">Register</a>
+      <a href="#" onclick="alert('Add funds')">Add funds</a>
+      <a href="#" onclick="alert('Support')">Support</a>
+      <a href="#" onclick="alert('Telegram')">Telegram Community</a>
+      <a href="#" onclick="alert('Verify SMS')">Verify sms</a>
+      <a href="#" onclick="alert('Guidelines')">Guidelines</a>
+      <a href="#" onclick="alert('Terms')">Terms & Conditions</a>
+      <a href="#" onclick="alert('Logout')">Logout</a>
     </nav>
-</header>
+  </header>
 
-<section id="ssl-certificates" class="category">
-    <h2>SSL Certificates</h2>
-    <div class="product">
-        <h3>Basic SSL</h3>
-        <p class="price">$10/year</p>
+  <!-- Login screen -->
+  <div id="login" class="page active">
+    <div class="login-container">
+      <h2>Login</h2>
+      <p>Enter your credentials to access your account</p>
+      <label>Email</label>
+      <input type="email" placeholder="Enter email">
+      <label>Password</label>
+      <div class="forgot-password"><a href="#">Forgot password?</a></div>
+      <input type="password" placeholder="Enter password">
+      <button onclick="login()">Sign In</button>
+      <div class="signup-link">Don't have an account?<a href="#" onclick="showPage('register')">Sign up</a></div>
     </div>
-    <div class="product">
-        <h3>Advanced SSL</h3>
-        <p class="price">$25/year</p>
-    </div>
-    <div class="product">
-        <h3>Wildcard SSL</h3>
-        <p class="price">$50/year</p>
-    </div>
-</section>
+  </div>
 
-<section id="web-hosting" class="category">
-    <h2>Web Hosting</h2>
-    <div class="product">
-        <h3>Basic Hosting</h3>
-        <p class="price">$5/month</p>
-    </div>
-    <div class="product">
-        <h3>Premium Hosting</h3>
-        <p class="price">$15/month</p>
-    </div>
-    <div class="product">
-        <h3>Business Hosting</h3>
-        <p class="price">$25/month</p>
-    </div>
-</section>
+  <!-- Dummy register page -->
+  <div id="register" class="page">
+    <p style="text-align:center;margin-top:50px;">[ Register form goes here ]</p>
+  </div>
 
-<section id="domain-names" class="category">
-    <h2>Domain Names</h2>
-    <div class="product">
-        <h3>.com Domain</h3>
-        <p class="price">$12/year</p>
+  <!-- Dashboard after login -->
+  <div id="dashboard" class="page dashboard">
+    <p class="welcome">Welcome back, <span id="uname">User</span></p>
+    <p>Here's what's happening with your account today.</p>
+    <div class="actions">
+      <button onclick="showPage('products')">Buy Accounts 🛒</button>
+      <button onclick="alert('Verify SMS')">Verify sms</button>
     </div>
-    <div class="product">
-        <h3>.net Domain</h3>
-        <p class="price">$10/year</p>
+    <div class="stats">
+      <div class="box wallet">
+        <h3>Wallet Balance</h3>
+        <p id="balance">₦0.00</p>
+        <small>Available to spend</small>
+      </div>
+      <div class="box">
+        <h3>Total Spent</h3>
+        <p>₦0.00</p>
+      </div>
+      <div class="box">
+        <h3>Purchases</h3>
+        <p>0</p>
+      </div>
+      <div class="box recent">
+        <h3>Recent Transactions <a href="#">View All</a></h3>
+        <!-- future txn list -->
+      </div>
+      <div class="box quick">
+        <h3>Quick Actions</h3>
+        <button onclick="alert('Create Ticket')">Create Ticket</button>
+        <button onclick="alert('View Purchase History')">View Purchase History</button>
+        <button onclick="alert('Get Support')">Get Support</button>
+      </div>
     </div>
-    <div class="product">
-        <h3>.org Domain</h3>
-        <p class="price">$8/year</p>
+  </div>
+
+  <!-- Products page layout -->
+  <div id="products" class="page products">
+    <div class="header-info">
+      <p class="balance">Balance: <span id="prodBalance">₦0.00</span></p>
+      <p class="welcome-email">Hi, <span id="userEmail">user@example.com</span></p>
     </div>
-</section>
+    <div class="explore">
+      <h3>Explore Our Servers</h3>
+      <p>Select one of our servers to view accounts in each section</p>
+      <button class="dropdown">All Categories ▼</button>
+      <button class="btn-products">Products</button>
+    </div>
+    <!-- category & product items go here -->
+    <p>[Product categories and listings here...]</p>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      document.body.classList.toggle('menu-open');
+    }
+    function showPage(id) {
+      document.querySelectorAll('.page').forEach(el => el.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      document.body.classList.remove('menu-open');
+    }
+    function login() {
+      // dummy login flow
+      document.getElementById('uname').textContent = 'JohnDoe';
+      document.getElementById('balance').textContent = '₦5,000.00';
+      document.getElementById('prodBalance').textContent = '₦5,000.00';
+      document.getElementById('userEmail').textContent = 'john@example.com';
+      showPage('dashboard');
+    }
+  </script>
 
 </body>
 </html>
-```
-
-### Explanation:
-- **Header**: It includes the website title and navigation links to different product categories.
-- **Sections**: Each section represents a category of products. Each product falls under these categories with a name and price.
-- **Styling**: A simple CSS setup makes the layout look modern and futuristic. You can edit and add more styles as required to achieve the desired visual effect.
-- **Responsive Design**: This design is relatively responsive; however, you can add media queries for further optimization on different devices.
-
-You can copy and paste this code into your HTML file, and then deploy it on Vercel! Make sure to customize it further according to your needs, especially the product names and prices.
